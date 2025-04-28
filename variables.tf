@@ -49,11 +49,11 @@ variable "default_tags_enabled" {
 
 variable "deployment" {
   type = map(object({
-    name                   = string
-    model_format           = string
-    model_name             = string
-    model_version          = string
-    scale_type             = string
+    name          = string
+    model_format  = string
+    model_name    = string
+    model_version = string
+    # scale_type             = string
     rai_policy_name        = optional(string)
     capacity               = optional(number)
     version_upgrade_option = optional(string)

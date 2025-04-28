@@ -79,8 +79,23 @@ resource "azurerm_cognitive_deployment" "this" {
     name    = each.value.model_name
     version = each.value.model_version
   }
-  scale {
-    type     = each.value.scale_type
-    capacity = try(each.value.capacity, 1)
+  # scale {
+  #   type     = each.value.scale_type
+  #   capacity = try(each.value.capacity, 1)
+  # }
+  # dynamic "sku" {
+  #   for_each = [each.value.scale]
+  #   iterator = scale
+
+  #   content {
+  #     name     = scale.value.type
+  #     capacity = scale.value.capacity
+  #     family   = scale.value.family
+  #     size     = scale.value.size
+  #     tier     = scale.value.tier
+  #   }
+  # }
+  sku {
+    name = "Standard"
   }
 }
